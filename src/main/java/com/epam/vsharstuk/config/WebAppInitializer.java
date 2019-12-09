@@ -15,7 +15,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext container) {
         ConfigurableWebApplicationContext appContext = new XmlWebApplicationContext();
-        appContext.setConfigLocation("WEB-INF/spring-context.xml");
+        appContext.setConfigLocation("WEB-INF/spring-web-servlet.xml");
         ServletRegistration.Dynamic dispather = container.addServlet("spring-web",
                 new DispatcherServlet(appContext));
         /*MultipartConfigElement multipartConfigElement = new MultipartConfigElement(null, 15000000, 15000000, 0);

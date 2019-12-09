@@ -1,0 +1,12 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.transport_section{
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 20%;
+    border-color: #0e88df;
+    border-style: solid;
+}

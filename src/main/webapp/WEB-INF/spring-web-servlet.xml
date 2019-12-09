@@ -12,14 +12,14 @@
 
     <context:component-scan base-package="com.epam.vsharstuk"/>
 
-    <mvc:interceptors>
+   <!-- <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <ref bean="localeChangeInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
 
-    <!--<mvc:resources mapping="/resources/**" location="/resources/"/>-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <mvc:annotation-driven/>
 
