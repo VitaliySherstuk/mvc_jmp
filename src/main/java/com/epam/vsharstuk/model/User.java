@@ -2,6 +2,7 @@ package com.epam.vsharstuk.model;
 
 public class User {
 
+    private Long id;
     private String name;
     private String email;
     private String password;
@@ -9,10 +10,18 @@ public class User {
     public User() {
     }
 
-    public User(String name, String email, String password) {
+    public User(Long id, String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

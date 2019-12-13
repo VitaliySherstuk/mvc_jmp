@@ -10,3 +10,24 @@ body{
     border-color: #0e88df;
     border-style: solid;
 }
+
+.find_section{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10%;
+    border-color: #0e88df;
+    border-style: solid;
+}
+
+.find_section_element{
+   width: 20%;
+}
+
+.table{
+    width: 80%
+    margin-left: 10%;
+    margin-right: 10%;
+    border: solid;
+    border-color: #0e88df;;
+}

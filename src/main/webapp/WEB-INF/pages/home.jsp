@@ -6,26 +6,34 @@
     </head>
     <body>
         <div class="transport_section">
-            <h2>Transport</h2>
+            <h2>Category</h2>
             <div>
-                <form>
-                    <button>CAR</button>
-                </form>
+                <a href="/cars">
+                    <span>
+                        <img src="" alt="CAR"/>
+                    </span>
+                </a>
             </div>
             <div>
-                <form>
-                    <button>LORRY</button>
-                </form>
+                <a href="">
+                    <span>
+                        <img src="" alt="LORRY"/>
+                    </span>
+                </a>
             </div>
             <div>
-                <form>
-                    <button>BIKE</button>
-                </form>
+                <a href="">
+                    <span>
+                        <img src="" alt="BIKE"/>
+                    </span>
+                </a>
             </div>
             <div>
-                <form>
-                    <button>My Inventory</button>
-                </form>
+                <a href="/inventory">
+                    <span>
+                        <img src="" alt="My Inventory"/>
+                    </span>
+                </a>
             </div>
         </div>
     </body>
