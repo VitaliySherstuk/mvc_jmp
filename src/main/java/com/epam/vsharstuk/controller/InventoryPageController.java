@@ -4,6 +4,7 @@ import com.epam.vsharstuk.model.Car;
 import com.epam.vsharstuk.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,7 @@ public class InventoryPageController {
         return "inventory";
     }
 
-    @RequestMapping(value = "/cars", method = RequestMethod.POST)
+    @RequestMapping(value = "/car", method = RequestMethod.POST)
     public String addCar(@RequestParam(value = "make") String make,
                          @RequestParam(value = "model") String model,
                          @RequestParam(value = "year") String year,

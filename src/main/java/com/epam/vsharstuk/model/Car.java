@@ -7,29 +7,30 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Car {
 
-    private Long id;
+    private Integer id;
     private String make;
     private String model;
-    private int year;
-    private int cost;
-    private User user;
+    private Integer year;
+    private Integer cost;
+    private Integer userId;
 
     public Car() {
     }
 
-    public Car(Long id, String make, String model, int year, int cost, User user) {
+    public Car(Integer id, String make, String model, Integer year, Integer cost, Integer userId) {
+        this.id = id;
         this.make = make;
         this.model = model;
         this.year = year;
         this.cost = cost;
-        this.user = user;
+        this.userId = userId;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,28 +50,28 @@ public class Car {
         this.model = model;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public int getCost() {
+    public Integer getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 
-    public User getUser() {
-        return user;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override

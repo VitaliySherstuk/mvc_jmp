@@ -1,9 +1,10 @@
-package com.epam.vsharstuk.dao;
+package com.epam.vsharstuk.service;
 
 import com.epam.vsharstuk.model.User;
 
-public interface UserRepository {
+public interface UserService {
 
     User createUser(User user);
+    User findUserById(Long id);
     User findUserByName(String name);
 }

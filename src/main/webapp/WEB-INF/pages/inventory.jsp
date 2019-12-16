@@ -5,16 +5,15 @@
         <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
-        <div>
-            <form>
-                <form method="post" action="/inventory/cars" onclick="return true">
+            <div class="find_section">
+                <form method="post" action="/inventory/car" onclick="return true">
                     <input class="find_section_element" id="car_make" name="make" type="text" placeholder="make"/>
                     <input class="find_section_element" id="car_model" name="model" type="text" placeholder="model"/>
-                    <input class="find_section_element" id="car_year" name="year" type="text" placeholder="year">
-                    <input class="find_section_element" id="submit" name="add" type="submit" placeholder="add"/>
+                    <input class="find_section_element" id="car_year" name="year" type="text" placeholder="year"/>
+                    <input class="find_section_element" id="car_cost" name="cost" type="text" placeholder="cost"/>
+                    <input class="button_submit" id="submit" name="submit" type="submit" placeholder="submit"/>
                 </form>
-            </form>
-        </div>
+            </div>
         <div>
             <table class="table">
                 <tr>

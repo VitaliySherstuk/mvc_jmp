@@ -5,9 +5,14 @@ import com.epam.vsharstuk.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/cars")
@@ -23,13 +28,19 @@ public class CarPageController {
 
     @RequestMapping(value = "/car", method = RequestMethod.POST)
     public String findCarsByMake(@RequestParam(value="make") String make, Model model) {
-        Car car = carService.findCarByMake(make);
-        if(car != null) {
-            model.addAttribute("newCar", car);
+        List<Car> cars = carService.findCarByMake(make);
+        if(cars != null)
+        {
+            model.addAttribute("cars", cars);
+            model.addAttribute("isVisible", true);
         }
-
         return "cars";
     }
 
+    @RequestMapping(value = "/removed/{id}", method = RequestMethod.GET)
+    public String findCarsByMake(@PathVariable(value="id") String id) {
+        carService.delete(Integer.valueOf(id));
+        return "cars";
+    }
 
 }

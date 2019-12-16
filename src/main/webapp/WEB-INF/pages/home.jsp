@@ -6,32 +6,32 @@
     </head>
     <body>
         <div class="transport_section">
-            <h2>Category</h2>
-            <div>
+            <h2 align="center">Category</h2>
+            <div class="category">
                 <a href="/cars">
                     <span>
-                        <img src="" alt="CAR"/>
+                        <img src="/resources/img/auto.png" alt="CAR"/>
                     </span>
                 </a>
             </div>
-            <div>
+            <div class="category">
                 <a href="">
                     <span>
-                        <img src="" alt="LORRY"/>
+                        <img src="/resources/img/lorry.png" alt="LORRY"/>
                     </span>
                 </a>
             </div>
-            <div>
+            <div class="category">
                 <a href="">
                     <span>
-                        <img src="" alt="BIKE"/>
+                        <img src="/resources/img/motto.png" alt="BIKE"/>
                     </span>
                 </a>
             </div>
-            <div>
+            <div class="category">
                 <a href="/inventory">
                     <span>
-                        <img src="" alt="My Inventory"/>
+                        <img src="/resources/img/inv.png" alt="My Inventory"/>
                     </span>
                 </a>
             </div>
