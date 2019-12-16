@@ -34,7 +34,7 @@ body{
     margin-right: 5%;
     margin-left: 5%;
     margin-bottom: 5%;
-    border: solid;
+    border: 4px double black;
     border-color: #0e88df;
 }
 

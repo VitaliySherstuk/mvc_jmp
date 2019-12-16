@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
-
 @Repository
 public class UserRepositoryImpl implements UserRepository{
 
@@ -15,7 +13,7 @@ public class UserRepositoryImpl implements UserRepository{
 
     @Override
     public User createUser(User user) {
-        String sql = "INSERT INTO users (name, email, password) VALUES (" + user.getName() + ", " + user.getEmail() +", " + user.getPassword()+ ")";
+        String sql = "INSERT INTO users (name, password, role) VALUES (" + user.getName() +", " + user.getPassword()+ ", " + user.getRoles() +")";
         jdbcTemplate.execute(sql);
         return user;
     }

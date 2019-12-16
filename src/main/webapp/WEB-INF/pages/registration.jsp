@@ -7,11 +7,11 @@
     </head>
     <body>
        <div class="login-form">
-        <form method='post' name='loginForm' action="/registration">
+        <form method='post' name='RegistrationForm' action="/registration/user">
             <table>
                 <tr>
                     <td>User:</td>
-                    <td><input type='text' name='username' value=''></td>
+                    <td><input type='text' name='name' value=''></td>
                 </tr>
                 <tr>
                     <td>Password:</td>

@@ -7,7 +7,7 @@
     </head>
     <body>
        <div class="login-form">
-        <form method='post' name='loginForm' action="/login">
+        <form method='post' name='loginForm' action="/j_spring_security_check">
 
                     <table>
                         <tr>
@@ -20,8 +20,8 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td style="float: right">
-                                <label for="remember">Remember me?</label>
+                            <td style="float: right;">
+                                <label for="remember">Remember me</label>
                                 <input type="checkbox" id="remember" name="remember-me" /></td>
                         </tr>
                         <tr>
