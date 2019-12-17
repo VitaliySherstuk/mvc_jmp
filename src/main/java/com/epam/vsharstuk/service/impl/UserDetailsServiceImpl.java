@@ -24,9 +24,12 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
 
-
             com.epam.vsharstuk.model.User userByName = userService.findUserByName(username);
-
+            System.out.println(userByName.getId());
+            System.out.println(userByName.getName());
+            System.out.println(userByName.getPassword());
+            System.out.println(userByName.getRoles());
+            System.out.println(userByName.getRolesList());
             List<GrantedAuthority> authorities = new ArrayList<>();
 
             for (Role role : userByName.getRolesList()) {

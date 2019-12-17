@@ -7,7 +7,7 @@
     </head>
     <body>
        <div class="login-form">
-        <form method='post' name='loginForm' action="/j_spring_security_check">
+        <form method='post' name='loginForm' action="/login">
 
                     <table>
                         <tr>
