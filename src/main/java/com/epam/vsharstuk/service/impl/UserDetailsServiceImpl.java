@@ -25,11 +25,6 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
         try {
 
             com.epam.vsharstuk.model.User userByName = userService.findUserByName(username).get(0);
-            System.out.println(userByName.getId());
-            System.out.println(userByName.getName());
-            System.out.println(userByName.getPassword());
-            System.out.println(userByName.getRoles());
-            System.out.println(userByName.getRolesList());
             List<GrantedAuthority> authorities = new ArrayList<>();
 
             for (Role role : userByName.getRolesList()) {

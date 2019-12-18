@@ -66,23 +66,14 @@ public class User {
 
         List<Role> list = new ArrayList<>();
 
-        try {
-
-            String[] roles = this.roles.split(",");
-
+        String[] roles = this.roles.split(",");
             if (roles.length == 0) {
                 return Collections.singletonList(Role.valueOf(this.roles));
             }
-
             for (String role : roles) {
                 list.add(Role.valueOf(role));
             }
-
             return list;
-
-        } catch (Throwable e) {
-            return Collections.emptyList();
-        }
     }
 
     @Override
