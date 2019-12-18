@@ -13,8 +13,4 @@ public class LoginPageController {
         return "login";
     }
 
-    /*@RequestMapping(method = RequestMethod.POST)
-    public String getLogin(){
-        return "login";
-    }*/
 }

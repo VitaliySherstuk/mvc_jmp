@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
 
-            com.epam.vsharstuk.model.User userByName = userService.findUserByName(username);
+            com.epam.vsharstuk.model.User userByName = userService.findUserByName(username).get(0);
             System.out.println(userByName.getId());
             System.out.println(userByName.getName());
             System.out.println(userByName.getPassword());

@@ -7,7 +7,7 @@
     </head>
     <body>
        <div class="login-form">
-        <form method='post' name='RegistrationForm' action="/registration/user">
+        <form method='post' name='RegistrationForm' action="/registration">
             <table>
                 <tr>
                     <td>User:</td>

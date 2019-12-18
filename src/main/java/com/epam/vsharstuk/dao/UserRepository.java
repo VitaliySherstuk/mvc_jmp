@@ -2,9 +2,11 @@ package com.epam.vsharstuk.dao;
 
 import com.epam.vsharstuk.model.User;
 
+import java.util.List;
+
 public interface UserRepository {
 
     User createUser(User user);
-    User findUserByName(String name);
-    User findUserById(Long id);
+    List<User> findUserByName(String name);
+    List<User> findUserById(Long id);
 }
