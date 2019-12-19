@@ -42,4 +42,5 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
             throw new UsernameNotFoundException(e.getMessage(), e);
         }
     }
+
 }
