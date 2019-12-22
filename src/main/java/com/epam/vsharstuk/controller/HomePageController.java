@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomePageController {
 
     @RequestMapping(method= RequestMethod.GET)
-    public String getHomePage(Model model) {
+    public String getHomePage() {
         return "home";
     }
 
-
+    @RequestMapping(value="/home", method= RequestMethod.GET)
+    public String getHome() {
+        return "home";
+    }
 
 }

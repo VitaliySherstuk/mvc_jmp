@@ -23,8 +23,8 @@ public class RegistrationPageController {
     @RequestMapping(method = RequestMethod.POST)
     public String registerUser(@RequestParam(value = "name") String name,
                                @RequestParam(value = "password") String password) {
-        User user = new User(name, password, "USER");
-        userService.createUser(user);
+
+        userService.createUser(name, password);
         return "login";
     }
 }

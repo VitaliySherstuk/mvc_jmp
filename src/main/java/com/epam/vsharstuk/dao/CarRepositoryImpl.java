@@ -14,7 +14,7 @@ public class CarRepositoryImpl implements  CarRepository{
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final RowMapper<Car> userRowMapper = (resultSet, rowNum) ->{
+    private static final RowMapper<Car> carRowMapper = (resultSet, rowNum) ->{
         Car car = new Car();
         car.setId(resultSet.getInt("id"));
         car.setMake(resultSet.getString("make"));
@@ -28,20 +28,26 @@ public class CarRepositoryImpl implements  CarRepository{
 
     @Override
     public void addCar(Car car) {
-        String sql = "INSERT INTO cars (make, model, year, cost) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getYear(), car.getCost());
+        String sql = "INSERT INTO cars (make, model, year, cost, user_id) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getYear(), car.getCost(), car.getUserId());
     }
 
     @Override
     public List<Car> findCarByMake(String make) {
         String sql = "SELECT id, make, model, year, user_id, cost FROM cars WHERE make = ?";
-        return jdbcTemplate.query(sql, new Object[]{make}, userRowMapper);
+        return jdbcTemplate.query(sql, new Object[]{make}, carRowMapper);
     }
 
     @Override
     public List<Car> findCarById(Integer id) {
         String sql = "SELECT id, make, model, year, user_id, cost FROM cars WHERE id = ?";
-        return jdbcTemplate.query(sql, new Object[]{id}, userRowMapper);
+        return jdbcTemplate.query(sql, new Object[]{id}, carRowMapper);
+    }
+
+    @Override
+    public List<Car> findCarByUserId(Integer userId) {
+        String sql = "SELECT id, make, model, year, user_id, cost FROM cars WHERE user_id = ?";
+        return jdbcTemplate.query(sql, new Object[]{userId}, carRowMapper);
     }
 
     @Override

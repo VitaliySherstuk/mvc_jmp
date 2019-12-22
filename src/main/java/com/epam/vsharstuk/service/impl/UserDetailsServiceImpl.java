@@ -19,6 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
 
     @Autowired
     private UserService userService;
+    private UserDetails userDetails;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -36,11 +37,14 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
                     userByName.getPassword(),
                     authorities
             );
-
+            this.userDetails = userDetails;
             return userDetails;
         } catch (Throwable e) {
             throw new UsernameNotFoundException(e.getMessage(), e);
         }
     }
 
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
 }

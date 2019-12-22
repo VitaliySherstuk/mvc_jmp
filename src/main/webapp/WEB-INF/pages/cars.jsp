@@ -6,10 +6,12 @@
         <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="find_section">
+            <h3>car search</h3>
             <form method="post" action="/cars/car" onclick="return true">
                 <input class="find_section_element" id="car_make" name="make" type="text" placeholder="make"/>
-                <input class="button_submit" id="submit" name="submit" type="submit" placeholder="submit"/>
+                <input class="button_submit" id="submit" name="submit" type="submit" value="search" placeholder="submit"/>
             </form>
         </div>
     <c:if test="${isVisible}">
@@ -20,8 +22,6 @@
                 <th>Model</th>
                 <th>Year</th>
                 <th>Cost</th>
-                <th>Update</th>
-                <th>Delete</th>
             </tr>
             <c:forEach items="${cars}" var="car">
                 <tr align="center">
@@ -29,16 +29,6 @@
                     <td>${car.model}</td>
                     <td>${car.year}</td>
                     <td>${car.cost}</td>
-                    <td>
-                        <form method="get" action="/settings/${car.id}" onclick="return true">
-                            <input class="button_edit" id="submit" name="update" type="submit" placeholder="submit"/>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="get" action="/cars/removed/${car.id}" onclick="return true">
-                            <input class="button_edit" id="submit" name="delete" type="submit" placeholder="submit"/>
-                        </form>
-                    </td>
                 </tr>
             </c:forEach>
            </table>

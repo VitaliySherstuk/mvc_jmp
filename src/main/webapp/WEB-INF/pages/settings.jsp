@@ -6,6 +6,7 @@
         <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div>
             <table class="table">
                 <tr>
