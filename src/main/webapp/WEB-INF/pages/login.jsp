@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<html lang="en">
     <head>
         <title>SpringMVC</title>
         <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
@@ -11,17 +12,17 @@
 
                     <table>
                         <tr>
-                            <td>User:</td>
+                            <td><spring:message code="login.user"/></td>
                             <td><input type='text' name='username' value=''></td>
                         </tr>
                         <tr>
-                            <td>Password:</td>
+                            <td><spring:message code="login.password"/></td>
                             <td><input type='password' name='password'/></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td style="float: right;">
-                                <label for="remember">Remember me</label>
+                                <label for="remember"><spring:message code="login.remember"/></label>
                                 <input type="checkbox" id="remember" name="remember-me" /></td>
                         </tr>
                         <tr>
@@ -35,6 +36,13 @@
                     </table>
 
                 </form>
+                <div>
+                    <select name="lang" onchange="location = this.value;">
+                        <option value="${current_lang}"></option>
+                        <option value="?lang=en">English</option>
+                        <option value="?lang=ru">Русский</option>
+                    </select>
+                </div>
             </div>
     </body>
 </html>
