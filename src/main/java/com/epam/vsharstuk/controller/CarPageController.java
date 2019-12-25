@@ -1,7 +1,9 @@
 package com.epam.vsharstuk.controller;
 
 import com.epam.vsharstuk.model.Car;
+import com.epam.vsharstuk.service.CarSearchCriteria;
 import com.epam.vsharstuk.service.CarService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,12 +29,28 @@ public class CarPageController {
     }
 
     @RequestMapping(value = "/car", method = RequestMethod.POST)
-    public String findCarsByMake(@RequestParam(value="make") String make, Model model) {
-        List<Car> cars = carService.findCarByMake(make);
+    public String findCarsByMake(@RequestParam(value="make") String make,
+                                 @RequestParam(value="model") String model,
+                                 @RequestParam(value="year") String year,
+                                 @RequestParam(value="cost") String cost,
+                                 @RequestParam(value ="order", required = false) String order, Model m) {
+        CarSearchCriteria criteria = new CarSearchCriteria();
+        criteria.setMake(make);
+        criteria.setModel(model);
+
+        if (StringUtils.isNoneBlank(year)) {
+            criteria.setYear(Integer.valueOf(year));
+        }
+
+        if (StringUtils.isNoneBlank(cost)) {
+            criteria.setCost(Integer.valueOf(cost));
+        }
+
+        List<Car> cars = carService.findCarByCriteria(criteria, order);
         if(cars != null)
         {
-            model.addAttribute("cars", cars);
-            model.addAttribute("isVisible", true);
+            m.addAttribute("cars", cars);
+            m.addAttribute("isVisible", true);
         }
         return "cars";
     }

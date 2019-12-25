@@ -12,10 +12,10 @@
        <div>
             <c:if test="${wrongLogin}">
                 <h3>${messageWrongLogin}</h3>
-               </c:if>
-               <c:if test="${loggout}">
-                   <h3>${message}</h3>
-               </c:if>
+            </c:if>
+            <c:if test="${logout}">
+                <h3>${message}</h3>
+            </c:if>
        </div>
         <form method='post' name='loginForm' action="/login">
                     <table>
@@ -26,12 +26,6 @@
                         <tr>
                             <td><spring:message code="login.password"/></td>
                             <td><input type='password' name='password'/></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td style="float: right;">
-                                <label for="remember"><spring:message code="login.remember"/></label>
-                                <input type="checkbox" id="remember" name="remember-me" /></td>
                         </tr>
                         <tr>
                             <td colspan='2'><button name="submit" type="submit"

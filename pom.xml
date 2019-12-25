@@ -25,7 +25,8 @@
     <servlet.version>4.0.0</servlet.version>
     <jsp.version>2.2</jsp.version>
     <jstl.version>1.2</jstl.version>
-
+    <hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
+    <validation.api.version>1.0.0.GA</validation.api.version>
   </properties>
 
   <dependencies>
@@ -126,6 +127,25 @@
       <artifactId>h2</artifactId>
       <version>1.4.191</version>
     </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${validation.api.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator-annotation-processor</artifactId>
+      <version>${hibernate.validator.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate.validator.version}</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>

@@ -20,12 +20,13 @@ body{
     margin-top: 10%;
     padding-top: 1%;
     padding-left: 2%;
-    padding-bottom: 1%;
+    padding-bottom: 2%;
     border-color: #0e88df;
     border-style: solid;
 }
 
 .find_section_element{
+   margin-top: 2%;
    width: 22%;
 }
 
@@ -40,6 +41,8 @@ body{
 
 .button_submit{
     width: 8%;
+    float: right;
+    margin: 1%;
 }
 
 .login-form{
@@ -70,4 +73,13 @@ body{
 
 .button_edit{
     width: 5%;
+}
+
+.car_card{
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    border-color: #0e88df;
+    border-style: solid;
 }

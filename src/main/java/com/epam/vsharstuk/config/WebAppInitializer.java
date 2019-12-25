@@ -31,12 +31,13 @@ public class WebAppInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext webCtx = new AnnotationConfigWebApplicationContext();
         webCtx.register(ServletConfig.class);
         webCtx.setServletContext(context);
-
         ServletRegistration.Dynamic servlet = context.addServlet("dispatcher", new DispatcherServlet(webCtx));
+        MultipartConfigElement multipartConfigElement = new MultipartConfigElement(null, 15000000, 15000000, 0);
+        servlet.setMultipartConfig(multipartConfigElement);
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
 
-        // bind servlet filter with application context
+
         context
                 .addFilter("springSecurityFilterChain", new DelegatingFilterProxy())
                 .addMappingForUrlPatterns(null, true, "/*");

@@ -26,7 +26,7 @@ public class LoginPageController {
         }
 
         if (logout != null) {
-            model.addAttribute("loggout", true);
+            model.addAttribute("logout", true);
             model.addAttribute("message", "You've been logged out successfully.");
         }
         return "login";

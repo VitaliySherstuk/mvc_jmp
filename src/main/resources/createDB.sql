@@ -3,6 +3,7 @@ CREATE TABLE users(
     name     varchar,
     password varchar,
     role     varchar,
+    phone     varchar,
     PRIMARY KEY (id)
 );
 

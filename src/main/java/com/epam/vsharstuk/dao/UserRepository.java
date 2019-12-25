@@ -8,5 +8,5 @@ public interface UserRepository {
 
     User createUser(User user);
     List<User> findUserByName(String name);
-    List<User> findUserById(Long id);
+    List<User> findUserById(Integer id);
 }

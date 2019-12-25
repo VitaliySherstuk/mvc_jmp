@@ -1,11 +1,15 @@
 package com.epam.vsharstuk.dao;
 
 import com.epam.vsharstuk.model.Car;
+import com.epam.vsharstuk.service.CarSearchCriteria;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -48,6 +52,47 @@ public class CarRepositoryImpl implements  CarRepository{
     public List<Car> findCarByUserId(Integer userId) {
         String sql = "SELECT id, make, model, year, user_id, cost FROM cars WHERE user_id = ?";
         return jdbcTemplate.query(sql, new Object[]{userId}, carRowMapper);
+    }
+
+    @Override
+    public List<Car> findCarByCriteria(CarSearchCriteria criteria) {
+        StringBuilder builder = new StringBuilder();
+        String sql = "SELECT id, make, model, year, user_id, cost FROM cars ";
+        List<Object> parameters = new ArrayList<>();
+        builder.append(sql);
+
+        if (StringUtils.isNoneBlank(criteria.getMake())) {
+            builder = addParameter(parameters, builder, criteria.getMake());
+            parameters.add(criteria.getMake());
+        }
+
+        if (StringUtils.isNoneBlank(criteria.getModel())) {
+            builder =  addParameter(parameters, builder, criteria.getModel());
+            parameters.add(criteria.getModel());
+        }
+
+        if (criteria.getYear() != null) {
+            builder = addParameter(parameters, builder, String.valueOf(criteria.getYear()));
+            parameters.add(criteria.getYear());
+        }
+
+        if (criteria.getCost() != null) {
+            builder = addParameter(parameters, builder, String.valueOf(criteria.getCost()));
+            parameters.add(criteria.getCost());
+        }
+
+        if (CollectionUtils.isNotEmpty(parameters)) {
+            Object[] objects = parameters.toArray();
+            builder = builder.insert(0, "WHERE ");
+            return jdbcTemplate.query(builder.toString(), objects, carRowMapper);
+        }
+
+        return jdbcTemplate.query(sql, carRowMapper);
+    }
+
+    private StringBuilder addParameter(List<Object> parameters, StringBuilder builder, String parameter) {
+        builder = CollectionUtils.isEmpty(parameters) ? builder.append(" and " + parameter + "=?") : builder.append(parameter + "=?");
+        return builder;
     }
 
     @Override

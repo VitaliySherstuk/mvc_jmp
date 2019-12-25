@@ -18,12 +18,13 @@ public class HomePageController {
 
     @RequestMapping(method= RequestMethod.GET)
     public String getHomePage() {
+        LOG.info("Get home page");
         return "home";
     }
 
     @RequestMapping(value="/home", method= RequestMethod.GET)
     public String getHome() {
-
+        LOG.info("Get home page");
         return "home";
     }
 

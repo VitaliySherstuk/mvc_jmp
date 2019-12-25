@@ -4,7 +4,11 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,9 +16,17 @@ import java.util.List;
 public class User {
 
     private Integer id;
+    @NotBlank
+    @Email(message = "type right email")
     private String name;
+    @NotBlank
+    @Pattern(regexp = "([a-zA-Z0-9-]+){4,}", message = "Password should have 4 symbols")
     private String password;
     private String roles;
+    @NotBlank
+    @Size(min = 13, max = 13, message = "Phone number should have 13 symbols and start '+'")
+    @Pattern(regexp = "[+]([0-9])*.", message = "Example: +375297772548")
+    private String phone;
 
     public User() {
     }
@@ -24,10 +36,11 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String password, String roles) {
+    public User(String name, String password, String roles, String phone) {
         this.name = name;
         this.password = password;
         this.roles = roles;
+        this.phone = phone;
     }
 
     public Integer getId() {
@@ -52,6 +65,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getRoles() {
