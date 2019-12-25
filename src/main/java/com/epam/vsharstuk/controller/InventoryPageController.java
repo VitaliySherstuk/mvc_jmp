@@ -5,12 +5,13 @@ import com.epam.vsharstuk.service.CarService;
 import com.epam.vsharstuk.service.UserService;
 import com.epam.vsharstuk.service.impl.UserDetailsServiceImpl;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class InventoryPageController {
     private UserDetailsServiceImpl userDetailsService;
     @Autowired
     private UserService userService;
+
+    private Logger LOG = Logger.getLogger(InventoryPageController.class);
 
     @RequestMapping(method = RequestMethod.GET)
     public String getInventoryPage(Model model) {
@@ -49,4 +52,17 @@ public class InventoryPageController {
         carService.addCar(make, model, year, cost, userId);
         return "redirect:/inventory";
     }
+
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "BAD request")
+    @ExceptionHandler(NumberFormatException.class)
+    public void handleNumberFormatException(NumberFormatException e) {
+        LOG.warn(e);
+    }
+
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal server error")
+    @ExceptionHandler(Exception.class)
+    public void handleException(Exception e) {
+        LOG.warn(e);
+    }
+
 }

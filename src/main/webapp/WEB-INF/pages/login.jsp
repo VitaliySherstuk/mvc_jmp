@@ -1,15 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<html lang="en">
+<html>
     <head>
         <title>SpringMVC</title>
         <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
-       <div class="login-form">
-        <form method='post' name='loginForm' action="/login">
 
+       <div class="login-form">
+       <div>
+            <c:if test="${wrongLogin}">
+                <h3>${messageWrongLogin}</h3>
+               </c:if>
+               <c:if test="${loggout}">
+                   <h3>${message}</h3>
+               </c:if>
+       </div>
+        <form method='post' name='loginForm' action="/login">
                     <table>
                         <tr>
                             <td><spring:message code="login.user"/></td>
