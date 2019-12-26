@@ -26,6 +26,7 @@ public class CarRepositoryImpl implements  CarRepository{
         car.setYear(resultSet.getInt("year"));
         car.setCost(resultSet.getInt("cost"));
         car.setUserId(resultSet.getInt("user_id"));
+        car.setImg(resultSet.getString("img"));
         return car;
     };
 
@@ -38,26 +39,26 @@ public class CarRepositoryImpl implements  CarRepository{
 
     @Override
     public List<Car> findCarByMake(String make) {
-        String sql = "SELECT id, make, model, year, user_id, cost FROM cars WHERE make = ?";
+        String sql = "SELECT id, make, model, year, user_id, cost, img FROM cars WHERE make = ?";
         return jdbcTemplate.query(sql, new Object[]{make}, carRowMapper);
     }
 
     @Override
     public List<Car> findCarById(Integer id) {
-        String sql = "SELECT id, make, model, year, user_id, cost FROM cars WHERE id = ?";
+        String sql = "SELECT id, make, model, year, user_id, cost, img FROM cars WHERE id = ?";
         return jdbcTemplate.query(sql, new Object[]{id}, carRowMapper);
     }
 
     @Override
     public List<Car> findCarByUserId(Integer userId) {
-        String sql = "SELECT id, make, model, year, user_id, cost FROM cars WHERE user_id = ?";
+        String sql = "SELECT id, make, model, year, user_id, cost, img FROM cars WHERE user_id = ?";
         return jdbcTemplate.query(sql, new Object[]{userId}, carRowMapper);
     }
 
     @Override
     public List<Car> findCarByCriteria(CarSearchCriteria criteria) {
         StringBuilder builder = new StringBuilder();
-        String sql = "SELECT id, make, model, year, user_id, cost FROM cars ";
+        String sql = "SELECT id, make, model, year, user_id, cost, img FROM cars ";
         List<Object> parameters = new ArrayList<>();
         builder.append(sql);
 
@@ -97,7 +98,7 @@ public class CarRepositoryImpl implements  CarRepository{
 
     @Override
     public void update(Car car) {
-        String sql = "UPDATE cars SET cost = " + car.getCost() + "WHERE id = " + car.getId();
+        String sql = "UPDATE cars SET cost = " + car.getCost() + ", img = '" + car.getImg() + "' WHERE id = " + car.getId();
         jdbcTemplate.update(sql);
     }
 

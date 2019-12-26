@@ -13,6 +13,7 @@ public class Car {
     private Integer year;
     private Integer cost;
     private Integer userId;
+    private String img;
 
     public Car() {
     }
@@ -72,6 +73,14 @@ public class Car {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override

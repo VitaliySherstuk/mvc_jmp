@@ -1,8 +1,11 @@
 package com.epam.vsharstuk.controller;
 
 import com.epam.vsharstuk.model.Car;
+import com.epam.vsharstuk.model.User;
 import com.epam.vsharstuk.service.CarSearchCriteria;
 import com.epam.vsharstuk.service.CarService;
+import com.epam.vsharstuk.service.UserService;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 @Controller

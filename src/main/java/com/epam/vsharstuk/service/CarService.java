@@ -12,5 +12,6 @@ public interface CarService {
     List<Car>findCarByUserId(Integer userId);
     List<Car> findCarByCriteria(CarSearchCriteria criteria, String order);
     Car update(Integer id, Integer cost);
+    Car update(Car car);
     void delete(Integer id);
 }

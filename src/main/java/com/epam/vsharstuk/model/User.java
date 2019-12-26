@@ -20,7 +20,6 @@ public class User {
     @Email(message = "type right email")
     private String name;
     @NotBlank
-    @Pattern(regexp = "([a-zA-Z0-9-]+){4,}", message = "Password should have 4 symbols")
     private String password;
     private String roles;
     @NotBlank

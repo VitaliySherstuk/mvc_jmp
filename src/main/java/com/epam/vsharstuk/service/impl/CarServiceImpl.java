@@ -108,6 +108,13 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public Car update(Car car) {
+        carRepository.update(car);
+        LOG.info("Car was updated " + car);
+        return  car;
+    }
+
+    @Override
     public void delete(Integer id) {
         carRepository.delete(id);
         LOG.info("Car with id: " + id + " was deleted ");

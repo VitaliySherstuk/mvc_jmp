@@ -14,15 +14,16 @@
                     <input class="find_section_element" id="car_model" name="model" type="text" placeholder="model"/>
                     <input class="find_section_element" id="car_year" name="year" type="text" placeholder="year"/>
                     <input class="find_section_element" id="car_cost" name="cost" type="text" placeholder="cost"/>
-                    <input class="button_submit" id="submit" name="submit" type="submit" placeholder="submit"/>
+                    <input class="button_submit" id="submit" name="submit" type="submit" value="Add" placeholder="submit"/>
                 </form>
             </div>
 
 <c:if test="${isVisible}">
                 <div>
-                <h3>Your cars</h3>
+                <h3 style="margin-left: 5%;">Your cars</h3>
                     <table class="table">
                         <tr>
+                            <th></th>
                             <th>Make</th>
                             <th>Model</th>
                             <th>Year</th>
@@ -32,6 +33,7 @@
                         </tr>
                         <c:forEach items="${cars}" var="car">
                             <tr align="center">
+                                <td><img alt="car" src="${car.img}"></td>
                                 <td>${car.make}</td>
                                 <td>${car.model}</td>
                                 <td>${car.year}</td>

@@ -15,6 +15,7 @@
                     <th>Year</th>
                     <th>Cost</th>
                     <th>New cost</th>
+                    <th>Upload</th>
                 </tr>
                 <c:forEach items="${cars}" var="car">
                     <tr align="center">
@@ -29,6 +30,12 @@
                                     <input class="button_edit" id="submit" name="submit" type="submit" placeholder="submit"/>
                                 </form>
                             </div>
+                        </td>
+                        <td>
+                            <form method="post" action="/settings/uploadImg/${car.id}" enctype="multipart/form-data">
+                                <input type="file" name="file"/>
+                                <input type="submit" value="Upload"/>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>

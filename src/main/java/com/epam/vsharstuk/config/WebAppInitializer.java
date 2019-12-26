@@ -17,17 +17,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext context) {
-        /*ConfigurableWebApplicationContext appContext = new XmlWebApplicationContext();
-        appContext.setConfigLocation("WEB-INF/spring-web-servlet.xml");
-        ServletRegistration.Dynamic dispather = container.addServlet("spring-web",
-                new DispatcherServlet(appContext));
-        MultipartConfigElement multipartConfigElement = new MultipartConfigElement(null, 15000000, 15000000, 0);
-        dispather.setMultipartConfig(multipartConfigElement);
-        dispather.setLoadOnStartup(1);
-        dispather.addMapping("/");
-        container.addFilter("springSecurityFilterChain", new DelegatingFilterProxy())
-                .addMappingForUrlPatterns(null, true, "/*");*/
-
         AnnotationConfigWebApplicationContext webCtx = new AnnotationConfigWebApplicationContext();
         webCtx.register(ServletConfig.class);
         webCtx.setServletContext(context);
@@ -36,7 +25,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
         servlet.setMultipartConfig(multipartConfigElement);
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
-
 
         context
                 .addFilter("springSecurityFilterChain", new DelegatingFilterProxy())

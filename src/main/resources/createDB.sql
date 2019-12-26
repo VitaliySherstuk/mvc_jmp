@@ -14,5 +14,6 @@ CREATE TABLE cars(
     model   varchar,
     year    int,
     cost    int,
+    img     varchar,
     PRIMARY KEY (id)
 );

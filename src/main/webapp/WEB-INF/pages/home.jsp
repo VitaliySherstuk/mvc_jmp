@@ -16,7 +16,7 @@
                         <img src="/resources/img/auto.png" alt="CAR"/>
                     </span>
                 </a>
-                <h3 align="center">CAR</h3>
+                <h4 align="center">CAR</h4>
             </div>
             <div class="category">
                 <a href="">
@@ -24,7 +24,7 @@
                         <img src="/resources/img/lorry.png" alt="LORRY"/>
                     </span>
                 </a>
-                <h3 align="center">LORRY</h3>
+                <h4 align="center">LORRY</h4>
             </div>
             <div class="category">
                 <a href="">
@@ -32,7 +32,7 @@
                         <img src="/resources/img/motto.png" alt="BIKE"/>
                     </span>
                 </a>
-                <h3 align="center">BIKE</h3>
+                <h4 align="center">BIKE</h4>
             </div>
             <div class="category">
                 <a href="/inventory">
@@ -40,7 +40,7 @@
                         <img src="/resources/img/inv.png" alt="My Inventory"/>
                     </span>
                 </a>
-                <h3 align="center">INVENTORY</h3>
+                <h4 align="center">INVENTORY</h4>
             </div>
         </div>
     </div>
