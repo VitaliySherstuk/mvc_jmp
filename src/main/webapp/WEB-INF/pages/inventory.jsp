@@ -33,7 +33,7 @@
                         </tr>
                         <c:forEach items="${cars}" var="car">
                             <tr align="center">
-                                <td><img alt="car" src="${car.img}"></td>
+                                <td><img src="${car.img}" alt="car"></td>
                                 <td>${car.make}</td>
                                 <td>${car.model}</td>
                                 <td>${car.year}</td>

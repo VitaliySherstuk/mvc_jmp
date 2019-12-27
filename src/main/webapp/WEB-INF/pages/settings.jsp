@@ -39,6 +39,9 @@
                         </td>
                     </tr>
                 </c:forEach>
+                <c:if test="${result}">
+                    <tr><td><h6>Car was updated.</h6></td></tr>
+                </c:if>
             </table>
         </div>
     </body>

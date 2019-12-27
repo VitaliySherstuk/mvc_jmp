@@ -29,6 +29,7 @@
     <div>
            <table id="cars" class="table">
             <tr>
+                <th></th>
                 <th>Make</th>
                 <th>Model</th>
                 <th>Year</th>
@@ -37,6 +38,7 @@
             </tr>
             <c:forEach items="${cars}" var="car">
                 <tr align="center">
+                    <td>${car.img}</td>
                     <td>${car.make}</td>
                     <td>${car.model}</td>
                     <td>${car.year}</td>

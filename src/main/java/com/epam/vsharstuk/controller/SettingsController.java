@@ -6,18 +6,15 @@ import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import javax.servlet.http.HttpSession;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -56,7 +53,7 @@ public class SettingsController {
 
     @RequestMapping(value = "/uploadImg/{id}", method = RequestMethod.POST)
     public String uploadImg(@RequestParam("file") MultipartFile file,
-                            @PathVariable("id") String id, Model model) {
+                            @PathVariable("id") String id, HttpSession session, Model model) {
 
         Car car = carService.findCarById(Integer.valueOf(id)).get(0);
 
@@ -64,20 +61,21 @@ public class SettingsController {
             InputStream is = file.getInputStream();
             if (is != null) {
                 byte[] content = IOUtils.toByteArray(is);
-                String fileName = car.getMake() + "_" + car.getId() + ".jpg";
-                String path = System.getProperty("user.dir") + "/";
+                String fileName ="\\" + car.getMake() + "_" + car.getId() + ".png";
+                Path path = Paths.get(session.getServletContext().getRealPath("/resources/img"));
                 LOG.info("FILE was upload: " + path + fileName);
                 FileOutputStream fos = new FileOutputStream(new File(path + fileName));
                 OutputStream os = new BufferedOutputStream(fos);
                 os.write(content);
-                car.setImg(path + fileName);
+                car.setImg("/mvc_jmp_war/resources/img/" + fileName);
                 carService.update(car);
+                model.addAttribute("result", true);
             }
         } catch (IOException e) {
             LOG.warn(e);
         }
 
-        return "inventory";
+        return "settings";
     }
 
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal server error")
