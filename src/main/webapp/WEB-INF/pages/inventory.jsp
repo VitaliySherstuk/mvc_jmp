@@ -28,24 +28,24 @@
                             <th>Model</th>
                             <th>Year</th>
                             <th>Cost</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         <c:forEach items="${cars}" var="car">
                             <tr align="center">
-                                <td><img src="${car.img}" alt="car"></td>
+                                <td><img src="/photo/${car.img}" alt="car" style="width:40px; height:40px; margin:2%;"></td>
                                 <td>${car.make}</td>
                                 <td>${car.model}</td>
                                 <td>${car.year}</td>
                                 <td>${car.cost}</td>
                                 <td>
                                     <form method="get" action="/settings/${car.id}" onclick="return true">
-                                        <input class="button_edit" id="submit" name="update" type="submit" placeholder="submit"/>
+                                        <input class="button_edit" id="submit" name="update" type="submit" value="Update" placeholder="submit"/>
                                     </form>
                                 </td>
                                 <td>
                                     <form method="get" action="/cars/removed/${car.id}" onclick="return true">
-                                        <input class="button_edit" id="submit" name="delete" type="submit" placeholder="submit"/>
+                                        <input class="button_edit" id="submit" name="delete" type="submit" value="Delete" placeholder="submit"/>
                                     </form>
                                 </td>
                             </tr>

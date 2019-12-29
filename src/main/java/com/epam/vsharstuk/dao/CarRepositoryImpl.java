@@ -61,38 +61,51 @@ public class CarRepositoryImpl implements  CarRepository{
         String sql = "SELECT id, make, model, year, user_id, cost, img FROM cars ";
         List<Object> parameters = new ArrayList<>();
         builder.append(sql);
+        boolean isFirstStatement = false;
 
         if (StringUtils.isNoneBlank(criteria.getMake())) {
-            builder = addParameter(parameters, builder, criteria.getMake());
+            isFirstStatement = isFirstStatement(parameters, builder, isFirstStatement);
+            builder = addParameter(parameters, builder, "make=");
             parameters.add(criteria.getMake());
         }
 
         if (StringUtils.isNoneBlank(criteria.getModel())) {
-            builder =  addParameter(parameters, builder, criteria.getModel());
+            isFirstStatement = isFirstStatement(parameters, builder, isFirstStatement);
+            builder =  addParameter(parameters, builder, "model=");
             parameters.add(criteria.getModel());
         }
 
         if (criteria.getYear() != null) {
-            builder = addParameter(parameters, builder, String.valueOf(criteria.getYear()));
+            isFirstStatement = isFirstStatement(parameters, builder, isFirstStatement);
+            builder = addParameter(parameters, builder, "year=");
             parameters.add(criteria.getYear());
         }
 
         if (criteria.getCost() != null) {
-            builder = addParameter(parameters, builder, String.valueOf(criteria.getCost()));
+            isFirstStatement(parameters, builder, isFirstStatement);
+            builder = addParameter(parameters, builder, "cost>");
             parameters.add(criteria.getCost());
         }
 
         if (CollectionUtils.isNotEmpty(parameters)) {
             Object[] objects = parameters.toArray();
-            builder = builder.insert(0, "WHERE ");
             return jdbcTemplate.query(builder.toString(), objects, carRowMapper);
         }
 
         return jdbcTemplate.query(sql, carRowMapper);
     }
 
+    private boolean isFirstStatement(List<Object> parameters, StringBuilder builder, boolean isFirstStatement) {
+
+        if (!isFirstStatement && CollectionUtils.isEmpty(parameters)) {
+            builder.append("WHERE ");
+            return true;
+        }
+        return isFirstStatement;
+    }
+
     private StringBuilder addParameter(List<Object> parameters, StringBuilder builder, String parameter) {
-        builder = CollectionUtils.isEmpty(parameters) ? builder.append(" and " + parameter + "=?") : builder.append(parameter + "=?");
+        builder = CollectionUtils.isNotEmpty(parameters) ? builder.append(" and " + parameter + "?") : builder.append(parameter + "?");
         return builder;
     }
 

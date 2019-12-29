@@ -34,7 +34,11 @@ public class CarPageController {
     private Logger LOG = Logger.getLogger(CarPageController.class);
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getCarPage() {
+    public String getCarPage(@CookieValue("userName") String userName, Model model) {
+        if (userName != null) {
+            model.addAttribute("userNameStatus", true);
+            model.addAttribute("userName", userName);
+        }
         return "cars";
     }
 

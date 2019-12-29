@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <title>header</title>
@@ -15,10 +16,13 @@
             <div class="category_link">
                 <p><a href="/inventory">INVENTORY</a></p>
             </div>
-            <div>
-                <form style="float:right" action="/logout" method="post">
+            <div style="float:right">
+                <form  action="/logout" method="post">
                     <button type="submit">Logout</button>
                 </form>
+                <c:if test="${userNameStatus}">
+                    <div style="float:right;"><h5>${userName}</h5></div>
+                </c:if>
             </div>
         </div>
     <body>

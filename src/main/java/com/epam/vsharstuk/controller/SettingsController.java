@@ -61,14 +61,15 @@ public class SettingsController {
             InputStream is = file.getInputStream();
             if (is != null) {
                 byte[] content = IOUtils.toByteArray(is);
-                String fileName ="\\" + car.getMake() + "_" + car.getId() + ".png";
-                Path path = Paths.get(session.getServletContext().getRealPath("/resources/img"));
+                String fileName =car.getMake() + "_" + car.getId() + ".png";
+                String path = "D:/photo/";
                 LOG.info("FILE was upload: " + path + fileName);
                 FileOutputStream fos = new FileOutputStream(new File(path + fileName));
                 OutputStream os = new BufferedOutputStream(fos);
                 os.write(content);
-                car.setImg("/mvc_jmp_war/resources/img/" + fileName);
+                car.setImg(fileName);
                 carService.update(car);
+                LOG.info("Car was updated" + car);
                 model.addAttribute("result", true);
             }
         } catch (IOException e) {

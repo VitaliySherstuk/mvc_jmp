@@ -29,10 +29,15 @@ public class InventoryPageController {
     private Logger LOG = Logger.getLogger(InventoryPageController.class);
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getInventoryPage(Model model) {
+    public String getInventoryPage(@CookieValue("userName") String userName, Model model) {
         String name = userDetailsService.getUserDetails().getUsername();
         Integer userId =userService.findUserByName(name).get(0).getId();
         List<Car> cars = carService.findCarByUserId(userId);
+
+        if (userName != null) {
+            model.addAttribute("userNameStatus", true);
+            model.addAttribute("userName", userName);
+        }
 
         if (CollectionUtils.isNotEmpty(cars)) {
             model.addAttribute("isVisible", true);

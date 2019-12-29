@@ -5,11 +5,20 @@ import com.epam.vsharstuk.model.User;
 import com.epam.vsharstuk.service.CarService;
 import com.epam.vsharstuk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.constraints.NotNull;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Controller
 @RequestMapping("/orders")
@@ -32,5 +41,21 @@ public class OrderPageController {
         model.addAttribute("car", car);
         model.addAttribute("user", user);
         return "orders";
+    }
+
+    @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ByteArrayResource> downLoadPhoto(@PathVariable(value = "id") @NotNull Integer id) throws IOException {
+        Car car = carService.findCarById(id).get(0);
+        String carImgName = car.getImg();
+        String path = "d:/photo/";
+        byte[] data = Files.readAllBytes(Paths.get(path + carImgName));
+        ByteArrayResource resource = new ByteArrayResource(data);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment;filename=" + carImgName)
+                .contentType(MediaType.IMAGE_JPEG).contentLength(data.length)
+                .body(resource);
+
     }
 }

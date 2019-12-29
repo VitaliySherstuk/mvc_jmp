@@ -37,8 +37,7 @@ public class RegistrationPageController {
     @RequestMapping(method = RequestMethod.POST)
     public String registerUser(@RequestParam(value = "name") String name,
                                @RequestParam(value = "password") String password,
-                               @RequestParam(value = "phone") String phone, Model model,
-                               HttpServletResponse response) {
+                               @RequestParam(value = "phone") String phone, Model model) {
         User user = userService.createUser(name, password, phone);
         Set<ConstraintViolation<User>> violations = validator.validate(user);
 
@@ -51,7 +50,6 @@ public class RegistrationPageController {
             });
             return "registration";
         }
-        response.addCookie(new Cookie("username", name));
         return "login";
     }
 

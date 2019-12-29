@@ -72,14 +72,26 @@ body{
 }
 
 .button_edit{
-    width: 5%;
+    width: 30%;
 }
 
 .car_card{
-    width: 40%;
+    width: 30%;
+    height: 300px;
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 10%;
     border-color: #0e88df;
     border-style: solid;
+}
+
+.car_card_text{
+    margin:50%;
+}
+
+.car_card_text_cost{
+    color: blue;
+    float: right;
+    font-size: 25px;
+    margin-right: 5%;
 }

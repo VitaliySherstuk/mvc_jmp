@@ -46,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout")
-                .deleteCookies("JSESSIONID");
+                .deleteCookies("JSESSIONID", "userName");
     }
 
     @Override

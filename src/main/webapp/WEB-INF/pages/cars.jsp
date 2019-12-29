@@ -14,7 +14,7 @@
                 <input class="find_section_element" id="car_make" name="make" type="text" placeholder="make"/>
                 <input class="find_section_element" id="car_model" name="model" type="text" placeholder="model"/>
                 <input class="find_section_element" id="car_year" name="year" type="text" placeholder="year"/>
-                <input class="find_section_element" id="car_cost" name="cost" type="text" placeholder="cost"/>
+                <input class="find_section_element" id="car_cost" name="cost" type="text" placeholder="min cost"/>
                 <select name="order" class="find_section_element" style="width:8%;">
                     <option selected disabled>Order</option>
                     <option value="make">Make</option>
@@ -34,18 +34,18 @@
                 <th>Model</th>
                 <th>Year</th>
                 <th>Cost</th>
-                <th>Buy</th>
+                <th></th>
             </tr>
             <c:forEach items="${cars}" var="car">
                 <tr align="center">
-                    <td>${car.img}</td>
+                    <td><img src="/photo/${car.img}" alt="car" style="width:40px; height:40px; margin:2%;"></td>
                     <td>${car.make}</td>
                     <td>${car.model}</td>
                     <td>${car.year}</td>
                     <td>${car.cost}</td>
                     <td>
                         <form method="get" action="/orders/car/${car.id}" onclick="return true">
-                            <input class="button_edit" id="submit" name="submit" type="submit" placeholder="submit"/>
+                            <input class="button_edit" id="submit" name="submit" type="submit" value="buy"/>
                         </form>
                     </td>
                 </tr>
