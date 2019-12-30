@@ -5,6 +5,7 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ConfigurableWebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -26,8 +27,12 @@ public class WebAppInitializer implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
 
+        context.addFilter("name", CharacterEncodingFilter.class)
+                .addMappingForUrlPatterns(null, false, "/*");
         context
                 .addFilter("springSecurityFilterChain", new DelegatingFilterProxy())
                 .addMappingForUrlPatterns(null, true, "/*");
     }
+
+
 }

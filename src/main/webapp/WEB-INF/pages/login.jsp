@@ -38,13 +38,7 @@
                     </table>
 
                 </form>
-                <div>
-                    <select name="lang" onchange="location = this.value;">
-                        <option value="${current_lang}"></option>
-                        <option value="?lang=en">English</option>
-                        <option value="?lang=ru">Русский</option>
-                    </select>
-                </div>
+
             </div>
     </body>
 </html>

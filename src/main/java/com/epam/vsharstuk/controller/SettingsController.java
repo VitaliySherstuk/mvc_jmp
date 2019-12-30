@@ -13,8 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,8 +26,12 @@ public class SettingsController {
     private Logger LOG = Logger.getLogger(SettingsController.class);
 
     @RequestMapping(method = RequestMethod.GET)
-    public String setNewCost() {
-        return "settings";
+    public String getSettingsPage(@CookieValue("userName") String userName, Model model) {
+        if (userName != null) {
+            model.addAttribute("userNameStatus", true);
+            model.addAttribute("userName", userName);
+        }
+        return "redirect:settings";
     }
 
 

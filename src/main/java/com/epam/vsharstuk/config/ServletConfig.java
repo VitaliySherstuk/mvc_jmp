@@ -63,6 +63,11 @@ public class ServletConfig extends WebMvcConfigurerAdapter {
         return localeChangeInterceptor;
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(getLocaleChangeInterceptor());
+    }
+
     @Bean(name = "multipartResolver")
     public MultipartResolver getMultipartResolver() {
         return new StandardServletMultipartResolver();

@@ -1,7 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
     <head>
         <title>SpringMVC</title>
+        <meta charset="UTF-8" content="text/html;charset=UTF-8">
         <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
 
@@ -16,7 +18,7 @@
                         <img src="/resources/img/auto.png" alt="CAR"/>
                     </span>
                 </a>
-                <h4 align="center">CAR</h4>
+                <h4 align="center"><spring:message code="home.car"/></h4>
             </div>
             <div class="category">
                 <a href="">
@@ -24,7 +26,7 @@
                         <img src="/resources/img/lorry.png" alt="LORRY"/>
                     </span>
                 </a>
-                <h4 align="center">LORRY</h4>
+                <h4 align="center"><spring:message code="home.lorry"/></h4>
             </div>
             <div class="category">
                 <a href="">
@@ -32,7 +34,7 @@
                         <img src="/resources/img/motto.png" alt="BIKE"/>
                     </span>
                 </a>
-                <h4 align="center">BIKE</h4>
+                <h4 align="center"><spring:message code="home.bike"/></h4>
             </div>
             <div class="category">
                 <a href="/inventory">
@@ -40,9 +42,16 @@
                         <img src="/resources/img/inv.png" alt="My Inventory"/>
                     </span>
                 </a>
-                <h4 align="center">INVENTORY</h4>
+                <h4 align="center"><spring:message code="home.inventory"/></h4>
             </div>
         </div>
+    </div>
+    <div>
+        <select name="lang" onchange="location = this.value;">
+            <option value="${current_lang}"></option>
+            <option value="?lang=en">English</option>
+            <option value="?lang=ru">Русский</option>
+        </select>
     </div>
     </body>
 </html>

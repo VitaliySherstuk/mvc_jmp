@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +31,11 @@ public class OrderPageController {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getOrderPage() {
+    public String getOrderPage(@CookieValue("userName") String userName, Model model) {
+        if (userName != null) {
+            model.addAttribute("userNameStatus", true);
+            model.addAttribute("userName", userName);
+        }
         return "orders";
     }
 
