@@ -55,7 +55,6 @@ public class OrderPageController {
         String path = "d:/photo/";
         byte[] data = Files.readAllBytes(Paths.get(path + carImgName));
         ByteArrayResource resource = new ByteArrayResource(data);
-
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION,
                         "attachment;filename=" + carImgName)

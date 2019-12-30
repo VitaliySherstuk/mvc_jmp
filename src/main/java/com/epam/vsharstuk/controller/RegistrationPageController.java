@@ -48,8 +48,10 @@ public class RegistrationPageController {
                 model.addAttribute(propertyPath + "_error", true);
                 model.addAttribute(propertyPath, message);
             });
+            LOG.info("User was not registered:" + user);
             return "registration";
         }
+        LOG.info("User was registered:" + user);
         return "login";
     }
 

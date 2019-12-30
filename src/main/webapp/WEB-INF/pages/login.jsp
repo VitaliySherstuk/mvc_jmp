@@ -29,11 +29,11 @@
                         </tr>
                         <tr>
                             <td colspan='2'><button name="submit" type="submit"
-                                                    value="submit">Login</button></td>
+                                                    value="submit"><spring:message code="login.login"/></button></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td style="float: right"><a href="/registration">Sign up</a></td>
+                            <td style="float: right"><a href="/registration"><spring:message code="login.registration"/></a></td>
                         </tr>
                     </table>
 

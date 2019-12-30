@@ -54,6 +54,7 @@ public class InventoryPageController {
         String username = userDetailsService.getUserDetails().getUsername();
         Integer userId = userService.findUserByName(username).get(0).getId();
         carService.addCar(make, model, year, cost, userId);
+        LOG.info("Car was added for " + username);
         return "redirect:/inventory";
     }
 

@@ -18,6 +18,13 @@
             <div class="category_link">
                 <p><a href="/inventory"><spring:message code="header.inventory"/></a></p>
             </div>
+            <div class="category_link">
+                    <select name="lang" onchange="location = this.value;">
+                        <option value="${current_lang}">lang</option>
+                        <option value="?lang=en">English</option>
+                        <option value="?lang=ru">Русский</option>
+                    </select>
+            </div>
             <div style="float:right">
                 <form  action="/logout" method="post">
                     <button style="float:right;" type="submit"><spring:message code="header.logout"/></button>

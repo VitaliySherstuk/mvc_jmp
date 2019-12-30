@@ -9,6 +9,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.FilterRegistration;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
@@ -27,8 +28,10 @@ public class WebAppInitializer implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
 
-        context.addFilter("name", CharacterEncodingFilter.class)
-                .addMappingForUrlPatterns(null, false, "/*");
+        FilterRegistration.Dynamic encoder = context.addFilter("encodingFilter", CharacterEncodingFilter.class);
+        encoder.setInitParameter("encoding", "UTF-8");
+        encoder.setInitParameter("forceEncoding", "true");
+        encoder.addMappingForUrlPatterns(null, false, "/*");
         context
                 .addFilter("springSecurityFilterChain", new DelegatingFilterProxy())
                 .addMappingForUrlPatterns(null, true, "/*");

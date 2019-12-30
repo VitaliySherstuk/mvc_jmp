@@ -11,7 +11,7 @@
     <jsp:include page="header.jsp"/>
     <div>
         <div class="transport_section">
-            <h2 align="center">Category</h2>
+            <h2 align="center"><spring:message code="home.category"/></h2>
             <div class="category">
                 <a href="/cars">
                     <span>
@@ -46,12 +46,6 @@
             </div>
         </div>
     </div>
-    <div>
-        <select name="lang" onchange="location = this.value;">
-            <option value="${current_lang}"></option>
-            <option value="?lang=en">English</option>
-            <option value="?lang=ru">Русский</option>
-        </select>
-    </div>
+
     </body>
 </html>

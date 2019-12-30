@@ -8,7 +8,7 @@
     <body>
         <jsp:include page="header.jsp"/>
             <div class="find_section">
-                <h3>Add car</h3>
+                <h3><spring:message code="inventory.add"/></h3>
                 <form method="post" action="/inventory/car" onclick="return true">
                     <input class="find_section_element" id="car_make" name="make" type="text" placeholder="make"/>
                     <input class="find_section_element" id="car_model" name="model" type="text" placeholder="model"/>
@@ -20,7 +20,7 @@
 
 <c:if test="${isVisible}">
                 <div>
-                <h3 style="margin-left: 5%;">Your cars</h3>
+                <h3 style="margin-left: 5%;"><spring:message code="inventory.your"/></h3>
                     <table class="table">
                         <tr>
                             <th></th>

@@ -21,11 +21,13 @@ public class LoginPageController {
         if (error != null){
             model.addAttribute("wrongLogin", true);
             model.addAttribute("messageWrongLogin", "This user does not exist");
+            LOG.info("Wrong login");
         }
 
         if (logout != null) {
             model.addAttribute("logout", true);
             model.addAttribute("message", "You've been logged out successfully.");
+            LOG.info("User logout");
         }
         return "login";
     }
